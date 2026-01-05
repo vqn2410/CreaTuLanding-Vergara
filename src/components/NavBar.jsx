@@ -1,11 +1,18 @@
 import CartWidget from "./CartWidget"
 
-const NavBar = () => {
+const NavBar = ({ pagina, setPagina }) => {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
 
-        <a className="navbar-brand" href="#">Tienda Coder.ar</a>
+        <a
+          className="navbar-brand"
+          href="/"
+          onClick={() => setPagina("inicio")}
+        >
+          Tienda Coder.ar
+        </a>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -22,21 +29,35 @@ const NavBar = () => {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">Inicio</a>
+              <button
+                className={`nav-link ${pagina === "inicio" ? "active-link" : ""}`}
+                onClick={() => setPagina("inicio")}
+              >
+                Inicio
+              </button>
             </li>
 
             <li className="nav-item">
-              <a className="nav-link" href="#">Productos</a>
+              <button
+                className={`nav-link ${pagina === "productos" ? "active-link" : ""}`}
+                onClick={() => setPagina("productos")}
+              >
+                Productos
+              </button>
             </li>
 
             <li className="nav-item">
-              <a className="nav-link" href="#">Contacto</a>
+              <button
+                className={`nav-link ${pagina === "contacto" ? "active-link" : ""}`}
+                onClick={() => setPagina("contacto")}
+              >
+                Contacto
+              </button>
             </li>
 
           </ul>
 
           <CartWidget />
-
         </div>
       </div>
     </nav>
